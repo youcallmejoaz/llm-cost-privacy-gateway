@@ -8,13 +8,18 @@ const PATTERNS: Array<[Task, RegExp]> = [
   ['draft', /\b(draft|write|compose|rewrite|reply to|newsletter|blog|post|email to|copy for|tagline)\b/i],
 ];
 
-/** Fast rule based task detection on the latest user message (the instruction). */
+/** Fast rule based task detection on the system prompt and latest user message (the instruction). */
 export function classifyTask(messages: ChatMessage[]): Task {
   const lastUser = [...messages].reverse().find((m) => m.role === 'user')?.content ?? '';
   const system = messages.find((m) => m.role === 'system')?.content ?? '';
   const instruction = `${system}\n${lastUser.slice(0, 600)}`;
-  for (const [task, re] of PATTERNS) if (re.test(instruction)) return task;
-  return 'chat';
+  // The earliest instruction word wins: "Investigate ... using this log extract" is analysis, not extraction.
+  let best: { task: Task; at: number } | null = null;
+  for (const [task, re] of PATTERNS) {
+    const at = instruction.search(re);
+    if (at >= 0 && (!best || at < best.at)) best = { task, at };
+  }
+  return best?.task ?? 'chat';
 }
 
 export const TASKS: Task[] = ['classification', 'extraction', 'summary', 'draft', 'analysis', 'chat'];

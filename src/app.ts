@@ -1,4 +1,4 @@
-import Fastify, { type FastifyInstance } from 'fastify';
+import Fastify, { LogController, type FastifyInstance } from 'fastify';
 import type { DestinationStream } from 'pino';
 import { loadConfig, loadEnv, type Env, type GatewayConfig } from './config.js';
 import { Gateway } from './pipeline.js';
@@ -54,7 +54,8 @@ export async function buildApp(opts: BuildOptions = {}): Promise<{ app: FastifyI
       redact: ['req.headers.authorization', 'req.headers["x-api-key"]'],
       ...(opts.logStream ? { stream: opts.logStream } : {}),
     },
-    disableRequestLogging: true,
+    // Default per-request logs are off; one compact line without bodies is logged in onResponse.
+    logController: new LogController({ disableRequestLogging: true }),
     bodyLimit: 2 * 1024 * 1024,
   });
   const warn = (m: string) => app.log.warn(m);

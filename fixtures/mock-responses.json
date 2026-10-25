@@ -109,7 +109,7 @@
         "volume",
         "report"
       ],
-      "text": "Weekly summary: ticket volume up 12 percent, mostly delivery delays in the North West. Average first reply time 2 hours 40 minutes. Two complaints escalated, both resolved."
+      "text": "Weekly summary: ticket volume up 12 percent, mostly delivery delays in the North West. Average first reply time 2 hours 40 minutes. Two complaints escalated, both resolved.\n\nContacts mentioned: {{refs}}"
     }
   ],
   "draft": [
@@ -140,7 +140,7 @@
         "post",
         "social"
       ],
-      "text": "LinkedIn post draft:\n\nThree things we learned rolling out AI across five teams this quarter:\n\n1. Start with the boring work. Classification and routing of incoming requests saved more hours than any flashy feature.\n2. Put a budget on every team from day one. Spend is easy to control early and hard to claw back later.\n3. Keep personal data out of prompts. A simple redaction step means legal signs off in days, not months.\n\nWhat would you add?"
+      "text": "LinkedIn post draft:\n\nThree things we learned rolling out AI across five teams this quarter:\n\n1. Start with the boring work. Classification and routing of incoming requests saved more hours than any flashy feature.\n2. Put a budget on every team from day one. Spend is easy to control early and hard to claw back later.\n3. Keep personal data out of prompts. A simple redaction step means legal signs off in days, not months.\n\nWhat would you add?\n\nNotes for the author: {{refs}}"
     }
   ],
   "analysis": [

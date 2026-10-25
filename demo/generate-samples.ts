@@ -135,7 +135,7 @@ export function generate(): SampleRequest[] {
   for (let i = 0; i < 6; i++) add('data', 'long-analysis', 'large', dataAnalysis(260 + Math.floor(rand() * 80)), 1500);
   for (let i = 0; i < 20; i++) add('data', 'extraction', 'small', dataExtract(), 200);
   for (let i = 0; i < 6; i++) add('data', 'short-summary', 'small', dataSummaryLong(12), 300);
-  for (let i = 0; i < 6; i++) add('data', 'long-summary', 'large', dataSummaryLong(120), 400);
+  for (let i = 0; i < 6; i++) add('data', 'long-summary', 'large', dataSummaryLong(200), 400);
 
   // Repeats: the same FAQ style questions arrive again (cache hits).
   const repeatable = out.filter((r) => r.kind === 'classification' || r.kind === 'summary');

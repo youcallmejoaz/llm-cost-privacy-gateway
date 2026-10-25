@@ -62,8 +62,10 @@ export class MockProvider implements Provider {
     const small = /mini|flash|haiku/.test(model);
     const task = classifyTask(req.messages);
     const options = loadFixtures()[task] ?? loadFixtures().chat;
-    const refs = [...new Set(prompt.match(/\[[A-Z_]+_\d+\]/g) ?? [])].join(', ') || 'none';
-    let text = pickReply(options, prompt.toLowerCase(), hash[0]).replaceAll('{{refs}}', refs);
+    const refs = [...new Set(prompt.match(/\[[A-Z_]+_\d+\]/g) ?? [])].join(', ');
+    let text = pickReply(options, prompt.toLowerCase(), hash[0]);
+    // Echo the redaction tokens like a real model quoting contact details back; drop the slot if there are none.
+    text = refs ? text.replaceAll('{{refs}}', refs) : text.replace(/ ?\(\{\{refs\}\}\)/g, '').replace(/\n*[^\n]*\{\{refs\}\}[^\n]*/g, '').replaceAll('{{refs}}', '');
     if (req.maxTokens && estimateTokens(text) > req.maxTokens) text = text.slice(0, req.maxTokens * 4);
 
     const inputTokens = estimateTokens(prompt) + 4 * req.messages.length;

@@ -7,9 +7,9 @@ export class AnthropicProvider implements Provider {
   readonly mock = false;
   private client: Anthropic;
 
-  constructor(apiKey: string, timeoutMs: number) {
+  constructor(apiKey: string, timeoutMs: number, baseURL?: string) {
     // Retries are the gateway's job (it falls back across providers), so keep the SDK's low.
-    this.client = new Anthropic({ apiKey, timeout: timeoutMs, maxRetries: 1 });
+    this.client = new Anthropic({ apiKey, timeout: timeoutMs, maxRetries: 1, ...(baseURL ? { baseURL } : {}) });
   }
 
   async chat(model: string, req: NormalisedRequest, signal: AbortSignal): Promise<NormalisedResponse> {
