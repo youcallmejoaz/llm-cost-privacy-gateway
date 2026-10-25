@@ -1,5 +1,5 @@
 {
-  "_label": "SAMPLE PRICES, edit to current rates. USD per 1 million tokens. Checked against public price pages in October 2026 where known; treat every number as an example until you confirm it with your vendor.",
+  "_label": "SAMPLE PRICES, edit to current rates. USD per 1 million tokens. Anthropic rows match Anthropic's published list prices in October 2026; OpenAI and Google rows are examples. Confirm every number with your vendor.",
   "currency": "USD",
   "unit": "per_1m_tokens",
   "models": {

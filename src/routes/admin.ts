@@ -2,7 +2,7 @@ import { timingSafeEqual } from 'node:crypto';
 import type { FastifyInstance } from 'fastify';
 import { z } from 'zod';
 import { loadConfig } from '../config.js';
-import { Redactor } from '../pii/redactor.js';
+import { findPii, Redactor } from '../pii/redactor.js';
 import type { Gateway } from '../pipeline.js';
 import { PROVIDER_IDS } from '../providers/registry.js';
 import { generateKey } from '../store/db.js';
@@ -81,7 +81,13 @@ export function registerAdminRoutes(app: FastifyInstance, gw: Gateway, configDir
       const b = z.object({ text: z.string().max(20000) }).parse(req.body);
       const r = new Redactor();
       const out = r.redact(b.text);
-      return { redacted: out.text, findings: out.findings.map(({ type, token }) => ({ type, token })), counts: r.counts };
+      return {
+        redacted: out.text,
+        findings: out.findings.map(({ type, token, start, end }) => ({ type, token, start, end })),
+        // Offsets into the caller's own text, so the page can highlight what was found.
+        spans: findPii(b.text).map(({ type, start, end }) => ({ type, start, end })),
+        counts: r.counts,
+      };
     });
 
     admin.post('/admin/reset', async (_req, reply) => {
