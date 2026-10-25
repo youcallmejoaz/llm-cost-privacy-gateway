@@ -24,7 +24,8 @@
     "demo:outage": "tsx demo/outage.ts",
     "loadtest": "tsx scripts/loadtest.ts",
     "keys:create": "tsx scripts/create-key.ts",
-    "sbom": "npm sbom --sbom-format cyclonedx --omit dev > sbom.json"
+    "sbom": "npm sbom --sbom-format cyclonedx --omit dev > sbom.json",
+    "check:hygiene": "tsx scripts/check-hygiene.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "0.133.0",
@@ -36,6 +37,7 @@
     "zod": "4.6.7"
   },
   "devDependencies": {
+    "@types/autocannon": "7.12.7",
     "@types/node": "22.20.5",
     "@types/pg": "8.23.1",
     "autocannon": "8.0.0",

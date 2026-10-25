@@ -43,6 +43,7 @@ export class MockProvider implements Provider {
 
   async chat(model: string, req: NormalisedRequest, signal: AbortSignal): Promise<NormalisedResponse> {
     this.received.push({ model, req: structuredClone(req) });
+    if (this.received.length > 1000) this.received.shift();
     const fault = this.faults.get(this.id);
     if (fault === 'error') {
       await sleep(40 * this.latencyScale, signal);

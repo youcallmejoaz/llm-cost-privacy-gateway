@@ -78,7 +78,7 @@ h1 { font-size: 26px; margin: 0; letter-spacing: -0.01em; }
 .table .num { text-align: right; }
 .table .empty { text-align: center; color: var(--muted); padding: 28px; }
 .bars { display: grid; gap: 12px; }
-.bar-row { display: grid; grid-template-columns: 150px 1fr 82px; align-items: center; gap: 12px; }
+.bar-row { display: grid; grid-template-columns: 210px 1fr 82px; align-items: center; gap: 12px; }
 .bar-label { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bar-track { height: 14px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 0 4px 4px 0; transition: width 0.5s ease; }
