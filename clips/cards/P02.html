@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="terminal.css"><title>P02</title></head><body>
+<div class="win"><div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="t">~/llm-cost-privacy-gateway</span></div><div class="body"></div></div>
+<script>
+// Output lines recorded from a real run of `npm run demo:outage` in demo mode.
+window.SCRIPT = {
+  cps: 22,
+  prompt: 'Simulate a provider outage and show me what our apps experience.',
+  lineMs: 280,
+  lines: [
+    ['dim', '$ npm run demo:outage'],
+    ['warn', 'Simulating outage: anthropic returns 503 for every call'],
+    ['out', ''],
+    ['out', '200  data       325 ms  fallback to openai:gpt-4.1-mini'],
+    ['out', '200  support    248 ms  fallback to openai:gpt-4.1-mini'],
+    ['out', '200  data       352 ms  fallback to openai:gpt-4.1-mini'],
+    ['out', '200  support    211 ms  fallback to openai:gpt-4.1-mini'],
+    ['out', '200  support    250 ms  fallback to openai:gpt-4.1-mini'],
+    ['out', '200  support    217 ms  fallback to openai:gpt-4.1-mini'],
+    ['out', '200  support    230 ms  fallback to openai:gpt-4.1-mini'],
+    ['out', '200  data       988 ms  fallback to openai:gpt-4.1'],
+    ['out', ''],
+    ['ok', '8 of 8 requests succeeded for the apps. anthropic restored.'],
+  ],
+};
+</script><script src="terminal.js"></script></body></html>

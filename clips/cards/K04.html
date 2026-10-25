@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"><title>K04</title>
+<style>
+.cols { display: grid; grid-template-columns: 1.25fr 1fr; gap: 70px; align-items: start; }
+.item { display: flex; gap: 24px; align-items: center; font-size: 44px; font-weight: 600; margin: 18px 0; }
+.item .icon { width: 64px; height: 64px; border-radius: 18px; font-size: 36px; }
+.panel { border-radius: 32px; padding: 44px 48px; background: #f6f6f3; }
+.big { font-size: 84px; font-weight: 800; color: var(--green); line-height: 1; }
+.est { display: inline-block; margin-top: 34px; font-size: 30px; font-weight: 700; color: var(--amber); background: var(--amber-bg); border-radius: 12px; padding: 8px 16px; }
+.cost { font-size: 38px; font-weight: 600; margin-top: 14px; line-height: 1.35; }
+</style></head><body>
+<div class="frame">
+  <div class="kicker in">A pilot for your company</div>
+  <div class="cols">
+    <div>
+      <div class="item in" style="transition-delay:0.3s"><span class="icon green">✓</span>Gateway set up in your cloud</div>
+      <div class="item in" style="transition-delay:0.8s"><span class="icon green">✓</span>Your apps switched with one setting</div>
+      <div class="item in" style="transition-delay:1.3s"><span class="icon green">✓</span>Budgets and rules for each team</div>
+      <div class="item in" style="transition-delay:1.8s"><span class="icon green">✓</span>UK personal data rules</div>
+      <div class="item in" style="transition-delay:2.3s"><span class="icon green">✓</span>Dashboard, audit log and handover</div>
+    </div>
+    <div class="panel in" style="transition-delay:2.9s">
+      <div class="big">Built in a week</div>
+      <div class="est">Estimate</div>
+      <div class="cost">Running cost: one small container, plus Redis and Postgres</div>
+    </div>
+  </div>
+</div>
+<script>window.play = () => document.body.classList.add('go');</script>
+</body></html>

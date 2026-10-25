@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"><title>K01</title>
+<style>
+.bars { position: absolute; right: 150px; bottom: 140px; display: flex; align-items: flex-end; gap: 18px; height: 300px; }
+.bars div { width: 46px; background: var(--red); border-radius: 8px 8px 0 0; height: 0; transition: height 0.7s ease; opacity: 0.85; }
+body.go .bars div { height: var(--h); }
+</style></head><body>
+<div class="frame">
+  <div class="kicker in">The problem</div>
+  <div class="line in" style="transition-delay:0.3s"><span class="icon red">↑</span>AI bills growing every month.</div>
+  <div class="line in" style="transition-delay:1.5s"><span class="icon amber">!</span>Personal data sent to three vendors.</div>
+  <div class="line in" style="transition-delay:2.7s"><span class="icon amber">?</span>No idea which team spends what.</div>
+</div>
+<div class="bars">
+  <div style="--h:70px;transition-delay:0.4s"></div><div style="--h:105px;transition-delay:0.55s"></div><div style="--h:140px;transition-delay:0.7s"></div>
+  <div style="--h:190px;transition-delay:0.85s"></div><div style="--h:240px;transition-delay:1s"></div><div style="--h:300px;transition-delay:1.15s"></div>
+</div>
+<script>window.play = () => document.body.classList.add('go');</script>
+</body></html>

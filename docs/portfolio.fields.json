@@ -1,0 +1,18 @@
+{
+  "repo": "https://github.com/youcallmejoaz/llm-cost-privacy-gateway",
+  "titles": [
+    "AI Cost Optimisation Gateway for OpenAI, Claude and Gemini",
+    "LLM Gateway: Cut AI Costs and Protect Personal Data",
+    "Multi-Model LLM Gateway with PII Redaction and Team Budgets"
+  ],
+  "recommendedTitle": 0,
+  "titleWhy": "It uses the exact words clients put in job titles for this kind of work (\"AI cost optimisation gateway\") and names the three vendors they search for.",
+  "role": "Backend and AI engineer: built the gateway, routing, caching, redaction, budgets and dashboard",
+  "description": "Teams using AI in several places face rising bills, personal data sent to many vendors and no view of who spends what. This demo build on sample data puts one gateway between apps and OpenAI, Claude and Gemini. It removes emails, phone, card, IBAN and NI numbers before requests leave, sends simple jobs to cheaper models, caches repeats, checks team budgets before each call and switches vendor in an outage. No prompt text is logged; 54 automated tests. TypeScript, Fastify, Redis, Postgres, Next.js, Docker.",
+  "skills": ["API Development", "TypeScript", "Redis", "OpenAI API", "Claude API"],
+  "screenshots": [
+    { "file": "clips/frames/C02_dashboard_spend.png", "caption": "Dashboard showing spend by team and model against monthly budgets, with savings from routing and cache." },
+    { "file": "clips/frames/C05_redaction_view.png", "caption": "What the app sent next to what the AI provider received, with card numbers and emails replaced by tokens." }
+  ],
+  "snippet": "I recently built a gateway that sits between a company's apps and OpenAI, Claude and Gemini, strips personal data before it leaves, sends simple jobs to cheaper models and enforces team budgets; here is a short demo: {repo}/blob/main/clips/proposal_cut.mp4 (use View raw if it does not play). If that is close to what you need, reply here and I'll show you how it would fit your workflow."
+}

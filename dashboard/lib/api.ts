@@ -73,6 +73,7 @@ export function usd(n: number | undefined): string {
   if (n === undefined || Number.isNaN(n)) return '$0';
   if (Math.abs(n) >= 100) return `$${n.toFixed(0)}`;
   if (Math.abs(n) >= 1) return `$${n.toFixed(2)}`;
+  if (n !== 0 && Math.abs(n) < 0.001) return `$${n.toFixed(5)}`;
   return `$${n.toFixed(4)}`;
 }
 

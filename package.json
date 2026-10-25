@@ -25,7 +25,8 @@
     "loadtest": "tsx scripts/loadtest.ts",
     "keys:create": "tsx scripts/create-key.ts",
     "sbom": "npm sbom --sbom-format cyclonedx --omit dev > sbom.json",
-    "check:hygiene": "tsx scripts/check-hygiene.ts"
+    "check:hygiene": "tsx scripts/check-hygiene.ts",
+    "portfolio": "tsx scripts/portfolio.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "0.133.0",
@@ -42,6 +43,7 @@
     "@types/pg": "8.23.1",
     "autocannon": "8.0.0",
     "concurrently": "10.0.6",
+    "playwright": "1.63.0",
     "tsx": "4.23.15",
     "typescript": "5.9.3",
     "vitest": "5.0.5"

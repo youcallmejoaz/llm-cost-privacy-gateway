@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="terminal.css"><title>P01</title></head><body>
+<div class="win"><div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="t">~/llm-cost-privacy-gateway</span></div><div class="body"></div></div>
+<script>
+window.SCRIPT = {
+  cps: 24,
+  prompt: 'Build a gateway between our apps and OpenAI, Anthropic and Google that cuts cost, removes personal data, and gives each team a budget.',
+  lineMs: 230,
+  lines: [
+    ['hl', 'Plan: LLM Cost and Privacy Gateway'],
+    ['out', '  1  One endpoint: OpenAI compatible + Anthropic Messages passthrough'],
+    ['out', '  2  Virtual key per team: monthly budget, rate limit, allowed models'],
+    ['out', '  3  Routing rules as data: small model for simple jobs, large for complex'],
+    ['out', '  4  Fallback to another provider on errors or timeouts'],
+    ['out', '  5  Cache repeated requests, record the savings'],
+    ['out', '  6  Remove emails, phones, NI, cards, IBANs, postcodes before sending'],
+    ['out', '  7  Cost ledger, dashboard and audit log (no prompt text)'],
+    ['ok',  '  Build order: redactor, providers, routing, stores, pipeline, dashboard'],
+  ],
+};
+</script><script src="terminal.js"></script></body></html>
