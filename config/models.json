@@ -1,0 +1,23 @@
+{
+  "_comment": "Model catalog. Each tier is an ordered fallback chain: the gateway tries the first available provider, then the next on errors or timeouts. Change models here, not in code.",
+  "aliases": {
+    "small": "tier:small",
+    "large": "tier:large",
+    "cheapest": "tier:cheapest",
+    "auto": "auto"
+  },
+  "tiers": {
+    "small": ["anthropic:claude-haiku-5-5", "openai:gpt-4.1-mini", "google:gemini-2.5-flash"],
+    "large": ["anthropic:claude-sonnet-5-5", "openai:gpt-4.1", "google:gemini-2.5-pro"]
+  },
+  "equivalents": {
+    "_comment": "When a caller names an exact model and its provider fails, fall back to these.",
+    "anthropic:claude-haiku-5-5": ["openai:gpt-4.1-mini", "google:gemini-2.5-flash"],
+    "anthropic:claude-sonnet-5-5": ["openai:gpt-4.1", "google:gemini-2.5-pro"],
+    "anthropic:claude-opus-5-5": ["anthropic:claude-sonnet-5-5", "openai:gpt-4.1"],
+    "openai:gpt-4.1-mini": ["anthropic:claude-haiku-5-5", "google:gemini-2.5-flash"],
+    "openai:gpt-4.1": ["anthropic:claude-sonnet-5-5", "google:gemini-2.5-pro"],
+    "google:gemini-2.5-flash": ["anthropic:claude-haiku-5-5", "openai:gpt-4.1-mini"],
+    "google:gemini-2.5-pro": ["anthropic:claude-sonnet-5-5", "openai:gpt-4.1"]
+  }
+}

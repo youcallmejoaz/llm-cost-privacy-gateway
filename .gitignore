@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.next/
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+sbom.json
+.data/
+clips/raw/
+clips/.tts/
+dashboard/next-env.d.ts
+*.tsbuildinfo

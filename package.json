@@ -1,0 +1,47 @@
+{
+  "name": "llm-cost-privacy-gateway",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One gateway between your apps and OpenAI, Anthropic and Google: cuts AI spend, strips personal data, gives every team a budget and an audit trail.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "dashboard"
+  ],
+  "scripts": {
+    "dev": "concurrently -n gateway,dashboard -c green,blue \"npm:dev:gateway\" \"npm:dev:dashboard\"",
+    "dev:gateway": "tsx watch src/index.ts",
+    "dev:dashboard": "npm run dev -w dashboard",
+    "start": "node dist/src/index.js",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "seed": "tsx demo/seed.ts",
+    "demo:samples": "tsx demo/generate-samples.ts",
+    "demo:outage": "tsx demo/outage.ts",
+    "loadtest": "tsx scripts/loadtest.ts",
+    "keys:create": "tsx scripts/create-key.ts",
+    "sbom": "npm sbom --sbom-format cyclonedx --omit dev > sbom.json"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.133.0",
+    "@google/genai": "1.52.0",
+    "fastify": "5.12.7",
+    "ioredis": "5.11.1",
+    "openai": "6.49.0",
+    "pg": "8.23.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/pg": "8.23.1",
+    "autocannon": "8.0.0",
+    "concurrently": "10.0.6",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}

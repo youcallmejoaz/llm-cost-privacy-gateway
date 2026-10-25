@@ -1,0 +1,13 @@
+{
+  "_comment": "Routing rules as data. First match wins. 'when' fields: team, task, minInputTokens, maxInputTokens, contains (any keyword). 'route': small | large | cheapest | provider:model. Only applies when the caller sends model 'auto'.",
+  "classifier": "rules",
+  "rules": [
+    { "name": "very-long-input-needs-large-model", "when": { "minInputTokens": 6000 }, "route": "large" },
+    { "name": "classification-to-small", "when": { "task": ["classification"] }, "route": "small" },
+    { "name": "extraction-to-small", "when": { "task": ["extraction"] }, "route": "small" },
+    { "name": "short-summary-to-small", "when": { "task": ["summary"], "maxInputTokens": 1500 }, "route": "small" },
+    { "name": "analysis-to-large", "when": { "task": ["analysis"] }, "route": "large" },
+    { "name": "drafts-to-large", "when": { "task": ["draft"] }, "route": "large" }
+  ],
+  "default": "large"
+}

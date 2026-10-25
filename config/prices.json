@@ -1,0 +1,14 @@
+{
+  "_label": "SAMPLE PRICES, edit to current rates. USD per 1 million tokens. Checked against public price pages in October 2026 where known; treat every number as an example until you confirm it with your vendor.",
+  "currency": "USD",
+  "unit": "per_1m_tokens",
+  "models": {
+    "anthropic:claude-haiku-5-5": { "input": 0.10, "output": 0.50 },
+    "anthropic:claude-sonnet-5-5": { "input": 2.00, "output": 10.00 },
+    "anthropic:claude-opus-5-5": { "input": 4.00, "output": 20.00 },
+    "openai:gpt-4.1-mini": { "input": 0.40, "output": 1.60 },
+    "openai:gpt-4.1": { "input": 2.00, "output": 8.00 },
+    "google:gemini-2.5-flash": { "input": 0.30, "output": 2.50 },
+    "google:gemini-2.5-pro": { "input": 1.25, "output": 10.00 }
+  }
+}

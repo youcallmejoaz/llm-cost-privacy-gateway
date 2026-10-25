@@ -1,0 +1,35 @@
+{
+  "_comment": "Demo teams. Budgets are small because the demo traffic is small; set real monthly budgets per team. Demo keys only work when DEMO_MODE=1.",
+  "teams": [
+    {
+      "id": "support",
+      "name": "Support",
+      "monthlyBudgetUsd": 5.00,
+      "rpmLimit": 600,
+      "allowedModels": ["auto", "small", "large", "cheapest", "anthropic:claude-haiku-5-5", "anthropic:claude-sonnet-5-5", "openai:gpt-4.1-mini", "openai:gpt-4.1", "google:gemini-2.5-flash", "google:gemini-2.5-pro"],
+      "defaultModel": "anthropic:claude-sonnet-5-5",
+      "pii": { "mode": "redact", "blockTypes": [] },
+      "demoKey": "demo-key-support"
+    },
+    {
+      "id": "marketing",
+      "name": "Marketing",
+      "monthlyBudgetUsd": 0.04,
+      "rpmLimit": 600,
+      "allowedModels": ["auto", "small", "large", "cheapest", "anthropic:claude-haiku-5-5", "anthropic:claude-sonnet-5-5", "openai:gpt-4.1-mini", "openai:gpt-4.1"],
+      "defaultModel": "anthropic:claude-sonnet-5-5",
+      "pii": { "mode": "redact", "blockTypes": ["card"] },
+      "demoKey": "demo-key-marketing"
+    },
+    {
+      "id": "data",
+      "name": "Data",
+      "monthlyBudgetUsd": 10.00,
+      "rpmLimit": 600,
+      "allowedModels": ["auto", "small", "large", "cheapest", "anthropic:claude-haiku-5-5", "anthropic:claude-sonnet-5-5", "anthropic:claude-opus-5-5", "openai:gpt-4.1-mini", "openai:gpt-4.1", "google:gemini-2.5-flash", "google:gemini-2.5-pro"],
+      "defaultModel": "anthropic:claude-sonnet-5-5",
+      "pii": { "mode": "redact", "blockTypes": [] },
+      "demoKey": "demo-key-data"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "_comment": "Fake personal data for tests and demo traffic only. Phone numbers are from Ofcom's drama ranges, cards are published test numbers, IBANs are textbook examples, emails use reserved example domains.",
+  "email": ["jane.doe@example.com", "sam.patel@example.co.uk", "billing.team@example.org"],
+  "phone": ["07700 900123", "+44 20 7946 0958", "0161 496 0123", "+1 202 555 0143"],
+  "ni_number": ["AB 12 34 56 C", "CE987654B"],
+  "card": ["4111 1111 1111 1111", "5555-5555-5555-4444", "3782 822463 10005"],
+  "iban": ["GB82 WEST 1234 5698 7654 32", "DE89 3704 0044 0532 0130 00"],
+  "postcode": ["SW1A 1AA", "M1 1AE", "EC1A 1BB"]
+}
