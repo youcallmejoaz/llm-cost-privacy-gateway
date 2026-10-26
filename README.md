@@ -35,7 +35,7 @@ One gateway between your company's apps and OpenAI, Anthropic and Google. It cut
 
 ## Demo
 
-- Proposal cut (60 to 90 seconds): [`clips/proposal_cut.mp4`](clips/proposal_cut.mp4)
+- Proposal cut (61 seconds, voiceover, no captions): [`clips/proposal_cut.mp4`](clips/proposal_cut.mp4)
 - Full walkthrough on YouTube: _link coming soon_
 - All clips: [`clips/MANIFEST.md`](clips/MANIFEST.md)
 
@@ -45,7 +45,7 @@ These numbers come from `npm run seed` (200 sample requests from three demo team
 
 | | |
 |---|---|
-| Requests | 200 (Support 92, Marketing 48, Data 60) |
+| Requests | 200 (Support 91, Marketing 49, Data 60) |
 | Spend | $0.2490 at sample prices |
 | Same traffic sent to each team's default large model | $0.3066 |
 | Saved | $0.0576 (19 percent): $0.0540 from routing, $0.0036 from cache |

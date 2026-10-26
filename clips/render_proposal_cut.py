@@ -24,7 +24,7 @@ SCENES = [
     (1, [("K01_problem.mp4", 0.0, 1.0)], "If your company uses AI in several places, the bills grow every month, and personal data is going out to more than one vendor."),
     (2, [("C01_client_burst.mp4", 0.6, 0.45), ("C02_dashboard_spend.mp4", 0.8, 0.55)], "This gateway sits between your apps and the AI providers. Your apps change one setting, and every request now goes through it."),
     (3, [("C03_CLOSE_routed_small_saving.mp4", 0.2, 0.45), ("C04_cache_hit.mp4", 2.2, 0.55)], "Simple jobs go to cheaper models, repeated questions come from cache, and you can see the savings per team."),
-    (4, [("C05_redaction_view.mp4", 2.0, 1.0)], "Personal details like card numbers and emails are removed before anything leaves, and put back in the answer."),
+    (4, [("C05_redaction_view.mp4", 2.0, 1.0)], "Personal details like card numbers and emails are removed before anything leaves, and put back in the answer. Only a count is kept, never the values."),
     (5, [("C06_budget_429.mp4", 0.6, 1.0)], "Each team gets a budget, and it is enforced before money is spent."),
     (6, [("C07_provider_outage.mp4", 3.0, 1.0)], "And if a provider goes down, requests switch to another one, so your apps keep working."),
     (7, [("K04_pilot.mp4", 0.0, 1.0)], "If you want control over your AI spend and data, reply to this proposal, and we can map it to your setup."),
@@ -91,11 +91,10 @@ def segment(clip, start, length, out, push_in):
         vf.append(f"tpad=stop_mode=clone:stop_duration={length - avail + 0.1:.3f}")
     vf.append(f"trim=duration={length:.3f}")
     if push_in:
-        frames = int(round(length * FPS))
-        # 5 percent slow push in, rendered from a 2x upscale so the motion stays smooth.
-        vf += ["scale=3840:2160:flags=lanczos", f"zoompan=z='1+0.05*on/{frames}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps={FPS}"]
+        # 5 percent slow push in: scale up a little more each frame and keep the centre.
+        vf += [f"scale=w='trunc(1920*(1+0.05*t/{length:.3f})/2)*2':h=-2:eval=frame:flags=bicubic", "crop=1920:1080"]
     vf += [f"fps={FPS}", "format=yuv420p"]
-    run("ffmpeg", "-y", "-i", str(src), "-vf", ",".join(vf), "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-r", str(FPS), str(out))
+    run("ffmpeg", "-y", "-i", str(src), "-vf", ",".join(vf), "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", "-r", str(FPS), str(out))
 
 
 def main():
@@ -112,8 +111,8 @@ def main():
 
     # Let the UI shots breathe if the cut would be under 60 seconds.
     total = sum(slots)
-    if total < 60:
-        extra = min(MAX_BREATHE, (60.5 - total) / 5)
+    if total < 61:
+        extra = min(MAX_BREATHE, (61 - total) / 5)
         for i in range(1, 6):
             slots[i] += extra
     total = sum(slots)
@@ -137,7 +136,7 @@ def main():
     labels = "[x0]" + "".join(f"[{i}:v]" for i in range(2, len(seg_paths)))
     chain += f";{labels}concat=n={len(seg_paths) - 1}:v=1:a=0[v]"
     video = WORK / "video.mp4"
-    run("ffmpeg", "-y", *inputs, "-filter_complex", chain, "-map", "[v]", "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-pix_fmt", "yuv420p", "-r", str(FPS), str(video))
+    run("ffmpeg", "-y", *inputs, "-filter_complex", chain, "-map", "[v]", "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-r", str(FPS), str(video))
 
     if wavs:
         # Each narration line padded with silence to its scene length, then joined and normalised.
